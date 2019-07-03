@@ -25,6 +25,7 @@
       method: 'post',
       url: APIURL + '/uploadfile',
       data: fd,
+      timeout:60000,
       config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
       .then(response => {
