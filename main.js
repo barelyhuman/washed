@@ -41,9 +41,11 @@
   })
 
   function initiateDownload(fileData) {
+    blob = dataURIToBlob(fileData.dataURL);
+    var url = URL.createObjectURL(blob);
     var a = document.createElement('A');
-    a.href = fileData.dataURL;
-    a.download = fileData.fileName
+    a.href = url;
+    a.download = fileData.fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -60,6 +62,23 @@
   function setErrorText(text) {
     errorText.innerHTML = text;
     setTimeout(() => setErrorText(''), 5000);
+  }
+
+  function dataURIToBlob(dataURI) {
+
+    var binStr = atob(dataURI.split(',')[1]),
+      len = binStr.length,
+      arr = new Uint8Array(len),
+      mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+    for (var i = 0; i < len; i++) {
+      arr[i] = binStr.charCodeAt(i);
+    }
+
+    return new Blob([arr], {
+      type: mimeString
+    });
+
   }
 
 
