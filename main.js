@@ -1,6 +1,5 @@
 (function () {
-  // const APIURL = 'http://localhost:3000';
-  const APIURL = 'http://159.89.162.126';
+  const APIURL = 'http://localhost:3000';
   const fileInput = document.querySelector('#file-input');
   const submitFile = document.querySelector('#submit-file-button');
   const loadingText = document.querySelector('#loading-text');
@@ -28,7 +27,7 @@
     })
       .then(response => {
         if (response.data.success) {
-          initiateDownload(response.data.file);
+          initiateDownload(response.data);
         }
         stopLoading();
       })
@@ -36,17 +35,13 @@
         stopLoading();
         setErrorText(err);
         console.log({ err });
-
       });
   })
 
-  function initiateDownload(fileName) {
-    const url = APIURL + '/download?';
-    const params = new URLSearchParams();
-    params.append('filename', fileName);
-    const urlWithParams = url + params.toString();
+  function initiateDownload(fileData) {
     var a = document.createElement('A');
-    a.href = urlWithParams;
+    a.href = fileData.dataURL;
+    a.download = fileData.fileName
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -62,6 +57,7 @@
 
   function setErrorText(text) {
     errorText.innerHTML = text;
+    setTimeout(() => setErrorText(''), 5000);
   }
 
 
