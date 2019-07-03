@@ -1,0 +1,9 @@
+.button-loading {
+  cursor: not-allowed;
+  background: #666;
+}
+
+.button-loading:hover {
+  cursor: not-allowed;
+  background: #666;
+}

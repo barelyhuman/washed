@@ -1,6 +1,5 @@
 (function () {
 
-  // const APIURL = 'http://localhost:3000';
   const APIURL = 'https://washed-server.herokuapp.com';
   const fileInput = document.querySelector('#file-input');
   const submitFile = document.querySelector('#submit-file-button');
@@ -13,6 +12,11 @@
   })
 
   submitFile.addEventListener('click', (event) => {
+
+    if (event.target.disabled) {
+      return;
+    }
+
     if (!toSendFile) {
       return;
     }
@@ -25,7 +29,6 @@
       method: 'post',
       url: APIURL + '/uploadfile',
       data: fd,
-      timeout:500000,
       config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
       .then(response => {
@@ -53,11 +56,15 @@
   }
 
   function startLoading() {
-    loadingText.innerHTML = "Loading...";
+    submitFile.innerHTML = "Loading..."
+    submitFile.classList.add('button-loading');
+    submitFile.disabled = true;
   }
 
   function stopLoading() {
-    loadingText.innerHTML = "";
+    submitFile.innerHTML = "Wash It"
+    submitFile.classList.remove('button-loading');
+    submitFile.disabled = false;
   }
 
   function setErrorText(text) {
