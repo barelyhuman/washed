@@ -5,32 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://unpkg.com/wingcss" />
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://siddharthgelera.com/mnml-css/minified/mnml.min.css">
 
   <title>Washed</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row center">
-      <div class="col-2"></div>
-      <div class="col-6 center">
-        <input id="file-input" type="file" />
+  <div class="margin-md padding-md">
+    <div class="flex flex-col flex-center">
+      <div class="margin-sm">
+        <input id="file-input" class="secondary-text" type="file" />
       </div>
-      <div class="col-2">
-        <button id="submit-file-button">Wash It</button>
+      <div class="margin-sm">
+        <button class="button" id="submit-file-button">Wash It</button>
       </div>
-      <div class="col-2"></div>
-    </div>
-    <div class="row center">
       <div class="col center">
         <p id="loading-text"></p>
-        <p id="error-text"></p>
+        <p class="secondary-text" id="error-text"></p>
       </div>
     </div>
   </div>
-
 
   <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
   <script src="./main.js"></script>
