@@ -1,6 +1,5 @@
 (function () {
-  // const APIURL = 'https://washed-server.herokuapp.com';
-  const APIURL = 'http://localhost:3000/api'
+  const APIURL = 'https://washed-server.herokuapp.com/api';
   const fileInput = document.querySelector('#file-input')
   const submitFile = document.querySelector('#submit-file-button')
   const errorText = document.querySelector('#error-text')
