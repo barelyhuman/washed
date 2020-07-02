@@ -4,11 +4,16 @@
   const fileInput = document.querySelector('#file-input');
   const submitFile = document.querySelector('#submit-file-button');
   const errorText = document.querySelector('#error-text');
+  const fileNameContainer = document.querySelector('#file-name');
   let toSendFile;
 
   fileInput.addEventListener('change', (event) => {
     toSendFile = event.target.files[0];
+    fileNameContainer.innerHTML = toSendFile.name;
+    submitFile.disabled = false;
   })
+
+  submitFile.disabled = true;
 
   submitFile.addEventListener('click', (event) => {
 
